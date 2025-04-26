@@ -11,6 +11,7 @@ class Service {
     private $categorie;
     private $prix_estime;
     private $disponible;
+    private $image;
 
     public function __construct() {
         $this->conn = Database::getConnection();
@@ -52,6 +53,9 @@ class Service {
     public function getCategorie() {
         return $this->categorie;
     }
+    public function getimage() {
+        return $this->image;
+    }
 
     public function getPrixEstime() {
         return $this->prix_estime;
@@ -65,7 +69,9 @@ class Service {
     public function setIdService($id_service) {
         $this->id_service = $id_service;
     }
-
+    public function setimage($image) {
+        $this->image = $image;
+    }
     public function setNomService($nom_service) {
         $this->nom_service = $nom_service;
     }

@@ -134,8 +134,8 @@
 
 <div class="navbar">
     <a href="?action=back_office">Dashboard</a>
-    <a href="?action=create_service">Ajouter un service</a>
     <a href="?action=front_office">Voir le Front Office</a>
+
 </div>
 
 <div class="main-content">

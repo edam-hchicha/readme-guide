@@ -50,13 +50,9 @@ switch ($action) {
     
 
     case 'update_demande':
-        $id = $_GET['id'] ?? null;
-        $service_id = $_POST['service_id'] ?? '';
-        $client_id = $_POST['client_id'] ?? '';
-        $description = $_POST['description'] ?? '';
     
         $demandecontroller = new DemandeServiceController();
-        $demandecontroller->update($id, $service_id, $client_id, $description);
+        $demandecontroller->update();
         break;
     
     case 'delete_demande':

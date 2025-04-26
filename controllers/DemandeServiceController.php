@@ -55,20 +55,28 @@ class DemandeServiceController {
     }
    
 
-    public function update($id, $service_id, $client_id, $description) {
-        $demande = new DemandeService();
-        $conn = $demande->getConnection(); 
+    public function update() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $service_id = $_POST['service_id'];
+            $client_id = $_POST['client_id'];
+            $description = $_POST['description'];
+            $etat = $_POST['etat'];
     
-        $stmt = $conn->prepare("
-            UPDATE " . $demande->getTable() . " 
-            SET service_id = ?, client_id = ?, description = ? 
-            WHERE id = ?
-        ");
+            $model = new DemandeService();
+            $conn = $model->getConnection();
+            $stmt = $conn->prepare("
+                UPDATE " . $model->getTable() . " 
+                SET service_id = ?, client_id = ?, description = ?, etat = ?
+                WHERE id = ?
+            ");
+            $stmt->execute([$service_id, $client_id, $description, $etat, $id]);
     
-        $stmt->execute([$service_id, $client_id, $description, $id]);
-        header("Location: index.php?action=front_office");
-        exit();
+            header("Location: index.php?action=front_office");
+            exit();
+        }
     }
+    
     
     public function delete($id) {
         $demande = new DemandeService();
